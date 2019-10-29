@@ -6,7 +6,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -34,7 +33,7 @@ public class CoreListenner implements Listener {
         Player player = event.getPlayer();
         Action action = event.getAction();
         EquipmentSlot hand = event.getHand();
-        
+
         KiwiItem item0 = KiwiItem.fromItem(player.getInventory().getItemInMainHand());
 
         if (hand == EquipmentSlot.HAND && item0 != null) {
@@ -60,7 +59,7 @@ public class CoreListenner implements Listener {
     public void onCraft(PrepareItemCraftEvent event) {
         CraftingInventory inventory = event.getInventory();
         Recipe recipe = inventory.getRecipe();
-     
+
     }
 
     @EventHandler
@@ -72,7 +71,7 @@ public class CoreListenner implements Listener {
         Inventory inv = event.getInventory();
         KiwiInventory kiwiInv = KiwiInventoryManager.fromInventory(inv);
         Player player = (Player) event.getViewers().get(0);
-    
+
         if (kiwiInv != null) {
             kiwiInv.onClose();
         }
